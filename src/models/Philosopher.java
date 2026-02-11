@@ -1,3 +1,5 @@
+package models;
+
 import java.util.Objects;
 
 
@@ -32,34 +34,37 @@ public class Philosopher extends Thread {
     @Override
     public void run() {
         try {
-            while (true) {
+            int meals = 1;
+            for (int i = 0; i < meals; i++) {
                 think();
-                if ("philosopher-1".equals(Thread.currentThread().getName())) {
+
+                if ("philosopher-1".equals(getName())) {
                     synchronized (rightStick) {
-                        System.out.println(Thread.currentThread().getName() + " take right stick " + rightStick.getName());
+                        System.out.println(getName() + " take right stick " + rightStick.getName());
                         Thread.sleep(100);
                         synchronized (leftStick) {
-                            System.out.println(Thread.currentThread().getName() + " take left stick " + leftStick.getName());
+                            System.out.println(getName() + " take left stick " + leftStick.getName());
                             eat();
-
                         }
                     }
                 } else {
                     synchronized (leftStick) {
-                        System.out.println(Thread.currentThread().getName() + " take left stick " + leftStick.getName());
+                        System.out.println(getName() + " take left stick " + leftStick.getName());
                         Thread.sleep(100);
                         synchronized (rightStick) {
-                            System.out.println(Thread.currentThread().getName() + " take right stick " + rightStick.getName());
+                            System.out.println(getName() + " take right stick " + rightStick.getName());
                             eat();
-
                         }
                     }
                 }
             }
+
+            System.out.println(getName() + " finished eating.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
 
     private void think() throws InterruptedException {
         Thread.sleep(500);

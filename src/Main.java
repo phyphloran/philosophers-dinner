@@ -1,18 +1,20 @@
+import services.Service;
+import services.impl.ServiceImpl;
+import java.util.Scanner;
+
+
 public class Main {
 
+    private static final Service SERVICE_IMPL = new ServiceImpl();
+
+    private static final Scanner scanner = new Scanner(System.in);
+
+
     public static void main(String[] args) {
-        Stick[] sticks = new Stick[5];
-        for (int i = 0; i < sticks.length; i++) {
-            sticks[i] = new Stick("stick-" + i);
-        }
-        System.out.println(sticks[1]);
-
-        for (int i = 0; i < sticks.length; i++) {
-            Stick leftStick = sticks[i];
-            Stick right = sticks[(i + 1) % 5];
-
-            Thread philosopher = new Philosopher("philosopher-" + i, leftStick, right);
-            philosopher.start();
+        System.out.println("1. Correct realization" + "\n2. Deadlock realization");
+        while (true) {
+            String input = scanner.nextLine();
+            SERVICE_IMPL.process(input);
         }
     }
 
