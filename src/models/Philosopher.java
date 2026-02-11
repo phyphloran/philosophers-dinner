@@ -1,5 +1,6 @@
 package models;
 
+
 import java.util.Objects;
 
 
@@ -15,27 +16,11 @@ public class Philosopher extends Thread {
         this.rightStick = right;
     }
 
-    public Stick getLeft() {
-        return leftStick;
-    }
-
-    public void setLeft(Stick left) {
-        this.leftStick = left;
-    }
-
-    public Stick getRight() {
-        return rightStick;
-    }
-
-    public void setRight(Stick right) {
-        this.rightStick = right;
-    }
-
     @Override
     public void run() {
         try {
-            int meals = 1;
-            for (int i = 0; i < meals; i++) {
+            int foodCycle = 1;
+            for (int i = 0; i < foodCycle; i++) {
                 think();
 
                 if ("philosopher-1".equals(getName())) {

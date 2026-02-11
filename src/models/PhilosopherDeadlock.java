@@ -1,5 +1,6 @@
 package models;
 
+
 import java.util.Objects;
 
 
@@ -12,22 +13,6 @@ public class PhilosopherDeadlock extends Thread {
     public PhilosopherDeadlock(String name, Stick left, Stick right) {
         super(name);
         this.leftStick = left;
-        this.rightStick = right;
-    }
-
-    public Stick getLeft() {
-        return leftStick;
-    }
-
-    public void setLeft(Stick left) {
-        this.leftStick = left;
-    }
-
-    public Stick getRight() {
-        return rightStick;
-    }
-
-    public void setRight(Stick right) {
         this.rightStick = right;
     }
 
