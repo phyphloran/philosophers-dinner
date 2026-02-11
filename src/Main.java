@@ -11,10 +11,9 @@ public class Main {
             Stick leftStick = sticks[i];
             Stick right = sticks[(i + 1) % 5];
 
-            Philosopher philosopher = new Philosopher("philosopher-" + i, leftStick, right);
+            Thread philosopher = new Philosopher("philosopher-" + i, leftStick, right);
             philosopher.start();
         }
-
     }
 
 }

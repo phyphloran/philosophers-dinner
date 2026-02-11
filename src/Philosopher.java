@@ -34,13 +34,25 @@ public class Philosopher extends Thread {
         try {
             while (true) {
                 think();
-                synchronized (leftStick) {
-                    System.out.println(Thread.currentThread().getName() + " take left stick " + leftStick.getName());
-                    Thread.sleep(100);
+                if ("philosopher-1".equals(Thread.currentThread().getName())) {
                     synchronized (rightStick) {
                         System.out.println(Thread.currentThread().getName() + " take right stick " + rightStick.getName());
-                        eat();
+                        Thread.sleep(100);
+                        synchronized (leftStick) {
+                            System.out.println(Thread.currentThread().getName() + " take left stick " + leftStick.getName());
+                            eat();
 
+                        }
+                    }
+                } else {
+                    synchronized (leftStick) {
+                        System.out.println(Thread.currentThread().getName() + " take left stick " + leftStick.getName());
+                        Thread.sleep(100);
+                        synchronized (rightStick) {
+                            System.out.println(Thread.currentThread().getName() + " take right stick " + rightStick.getName());
+                            eat();
+
+                        }
                     }
                 }
             }
@@ -54,7 +66,7 @@ public class Philosopher extends Thread {
     }
 
     private void eat() throws InterruptedException {
-        System.out.println("philosopher + " + Thread.currentThread().getName() + " eating");
+        System.out.println("philosopher " + Thread.currentThread().getName() + " eating");
         Thread.sleep(500);
     }
 
