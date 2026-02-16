@@ -42,7 +42,7 @@ public class ServiceImpl implements Service {
                     }
                 }
                 System.out.println("All philosophers have finished eating. Program ends.");
-                System.exit(1);
+//                System.exit(0);
 
                 break;
             case "2":

@@ -12,9 +12,11 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("1. Correct realization" + "\n2. Deadlock realization");
-        while (true) {
+        boolean flag = true;
+        while (flag) {
             String input = scanner.nextLine();
             service.process(input);
+            flag = false;
         }
     }
 

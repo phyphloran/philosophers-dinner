@@ -19,13 +19,15 @@ public class PhilosopherDeadlock extends Thread {
     @Override
     public void run() {
         try {
-            while (true) {
+            int foodCycle = 1;
+            for (int i = 0; i < foodCycle; i++) {
                 think();
+                System.out.println(getName() + " thinking");
                 synchronized (leftStick) {
-                    System.out.println(Thread.currentThread().getName() + " take left stick " + leftStick.getName());
+                    System.out.println(Thread.currentThread().getName() + " take left " + leftStick.getName());
                     Thread.sleep(100);
                     synchronized (rightStick) {
-                        System.out.println(Thread.currentThread().getName() + " take right stick " + rightStick.getName());
+                        System.out.println(Thread.currentThread().getName() + " take right " + rightStick.getName());
                         eat();
 
                     }

@@ -22,22 +22,23 @@ public class Philosopher extends Thread {
             int foodCycle = 1;
             for (int i = 0; i < foodCycle; i++) {
                 think();
+                System.out.println(getName() + " thinking");
 
                 if ("philosopher-1".equals(getName())) {
                     synchronized (rightStick) {
-                        System.out.println(getName() + " take right stick " + rightStick.getName());
+                        System.out.println(getName() + " take right " + rightStick.getName());
                         Thread.sleep(100);
                         synchronized (leftStick) {
-                            System.out.println(getName() + " take left stick " + leftStick.getName());
+                            System.out.println(getName() + " take left " + leftStick.getName());
                             eat();
                         }
                     }
                 } else {
                     synchronized (leftStick) {
-                        System.out.println(getName() + " take left stick " + leftStick.getName());
+                        System.out.println(getName() + " take left " + leftStick.getName());
                         Thread.sleep(100);
                         synchronized (rightStick) {
-                            System.out.println(getName() + " take right stick " + rightStick.getName());
+                            System.out.println(getName() + " take right " + rightStick.getName());
                             eat();
                         }
                     }
